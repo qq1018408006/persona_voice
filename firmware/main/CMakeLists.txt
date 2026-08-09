@@ -1,0 +1,28 @@
+idf_component_register(
+    SRCS
+        "app_main.c"
+        "app_controller.c"
+        "aec_audio_source.c"
+        "board_audio.c"
+        "board_ui.c"
+        "livekit_terminal.c"
+        "media_pipeline.c"
+        "network.c"
+        "speech_recognition.c"
+        "token_client.c"
+    INCLUDE_DIRS "."
+    REQUIRES
+        driver
+        esp_event
+        esp_driver_touch_sens
+        esp_http_client
+        esp_lcd
+        esp_netif
+        esp_wifi
+        esp-sr
+        esp_lvgl_port
+        json
+        livekit
+        lvgl
+        nvs_flash
+)

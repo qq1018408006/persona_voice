@@ -1,0 +1,20 @@
+# 构建与组件管理器产物（首次构建自动生成/下载，勿提交）
+build/
+managed_components/
+dependencies.lock
+sdkconfig
+sdkconfig.old
+
+# 环境配置（可能含密钥，勿提交）
+.env
+.env.*
+!.env.example
+
+# 其他
+__pycache__/
+*.pyc
+*.bin
+*.elf
+*.map
+.idea/
+.vscode/

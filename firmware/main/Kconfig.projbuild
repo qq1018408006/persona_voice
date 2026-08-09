@@ -1,0 +1,87 @@
+menu "SparkBot Jarvis terminal"
+
+    config SPARKBOT_PREWARM_LIVEKIT
+        bool "Keep a token-safe LiveKit room ready in standby"
+        default y
+        help
+            Connect after boot and retain the room after orderly standby. The
+            firmware mutes microphone RTP while standing by, so microphone
+            audio is not sent to Gemini. This removes token fetch, ICE/DTLS
+            and agent startup latency from the next Jarvis wake.
+
+    config SPARKBOT_WIFI_SSID
+        string "Wi-Fi SSID"
+        default ""
+
+    config SPARKBOT_WIFI_PASSWORD
+        string "Wi-Fi password"
+        default ""
+
+    config SPARKBOT_TOKEN_ENDPOINT
+        string "Short-lived LiveKit token endpoint"
+        default "http://<your-lan-ip>:8082/livekit/token"
+        help
+            HTTP POST endpoint. The request body contains identity, room and
+            agent_name. It must return {"server_url":"ws://...","token":"..."}.
+            Port 8082 matches root .env TOKEN_SERVER_PORT; replace
+            <your-lan-ip> with the PC running LiveKit (cannot be inferred).
+
+    config SPARKBOT_TOKEN_API_KEY
+        string "Optional device key for the token endpoint"
+        default ""
+        help
+            Sent as X-Device-Key. Must match TOKEN_SERVICE_KEY in the root .env
+            file (fill it yourself; there is no safe default).
+
+    config SPARKBOT_ROOM_NAME
+        string "LiveKit room name"
+        default ""
+        help
+            Must match LIVEKIT_ROOM in the root .env file (fill it yourself).
+
+    config SPARKBOT_AGENT_NAME
+        string "Dispatched LiveKit agent name"
+        default "memo-agent"
+        help
+            Default already matches LIVEKIT_AGENT_NAME in the root .env;
+            change only if you renamed the agent.
+
+    config SPARKBOT_FALLBACK_SERVER_URL
+        string "Fallback LiveKit server URL"
+        default "ws://<your-lan-ip>:7880"
+        help
+            Used only when the token endpoint is unavailable. Replace
+            <your-lan-ip> with the PC running LiveKit.
+
+    config SPARKBOT_FALLBACK_TOKEN
+        string "Development-only fallback JWT"
+        default ""
+        help
+            Used only when the token endpoint is empty. Do not ship a permanent
+            token or the LiveKit API secret in firmware.
+
+    config SPARKBOT_SPEAKER_VOLUME
+        int "Speaker volume (0-100)"
+        default 50
+        range 0 100
+
+    config SPARKBOT_MIC_GAIN_DB
+        int "Microphone input gain in dB"
+        default 35
+        range 0 48
+
+    config SPARKBOT_WAKE_THRESHOLD
+        string "WakeNet threshold"
+        default "0.60"
+
+    config SPARKBOT_SR_DIAGNOSTICS
+        bool "Log microphone/AFE diagnostics every two seconds"
+        default n
+        help
+            Enable only while diagnosing microphone or WakeNet problems.
+
+    config SPARKBOT_ENABLE_FEEDBACK_TONES
+        bool "Enable local wake/standby tones"
+        default y
+
+endmenu

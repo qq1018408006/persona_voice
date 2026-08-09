@@ -1,0 +1,7 @@
+dependencies:
+  espressif/esp_capture: ~0.7
+  idf:
+    version: '>=4.1.0'
+  tempotian/av_render: {}
+  tempotian/codec_board: ~1.0
+  tempotian/media_lib_sal: ~0.9

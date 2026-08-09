@@ -1,0 +1,23 @@
+## Dependencies of the SparkBot main component.
+dependencies:
+  espressif/esp-sr: "2.1.5"
+  espressif/esp_capture: "0.7.11"
+  # Vendored under components/espressif__esp_codec_dev so the I2S data-interface
+  # fix (skip reconfiguring a running channel when the format already matches)
+  # survives component-manager re-resolves.
+  espressif/esp_codec_dev:
+    version: "1.4.0"
+    path: ../components/espressif__esp_codec_dev
+  # Vendored under components/tempotian__av_render with the AEC far-end
+  # reference patch (ref_cb runs before esp_codec_dev_write), so the patch
+  # survives component-manager re-resolves.
+  tempotian/av_render:
+    version: "0.9.1"
+    path: ../components/tempotian__av_render
+  lvgl/lvgl: "^9.2"
+  espressif/esp_lvgl_port: "^2.3"
+
+# LiveKit client SDK is vendored under components/livekit (0.3.10) with two
+# memory patches: the engine task stack runs on PSRAM and the signaling
+# WebSocket RX buffer is 8 KiB instead of 20 KiB.  Keeping it local makes the
+# patches durable across component-manager re-resolves.

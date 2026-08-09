@@ -1,0 +1,19 @@
+# 根目录忽略项；各子项目自带的 .gitignore 在对应子目录内继续生效
+.DS_Store
+*.log
+*.part
+
+# 统一环境配置（含密钥，勿提交）
+.env
+.env.*
+!.env.example
+
+# 服务运行日志与 PID
+logs/
+
+# 内部资料：开发踩坑手册与声纹方案文档，不上传公开仓库
+docs/LiveKit_Gemini_Hermes_语音Agent项目复盘与排错手册.md
+docs/gemini_live_声纹认证智能家居方案.md
+docs/开源纯声纹门控实现方案.md
+docs/声纹门控实现方案.md
+docs/private/

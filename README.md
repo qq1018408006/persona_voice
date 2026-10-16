@@ -1,8 +1,20 @@
-# Persona Voice
+<h1 align="center">Persona Voice</h1>
 
-> 多终端实时语音助手：可接任意后端 Agent，导入个人任务画像，打造懂你的专属助手。
-> 
-> Multi-terminal real-time voice assistant: pluggable backend agents, personal task profile, tailored to you.
+<p align="center">
+  <strong>多终端实时语音助手，打造懂你的专属助手。</strong><br>
+  Multi-terminal real-time voice assistant · Pluggable agents · Personal profiles
+</p>
+
+<p align="center">
+  <a href="docs/SETUP.md">快速开始</a> ·
+  <a href="#功能总览--features">功能总览</a> ·
+  <a href="#架构--architecture">系统架构</a> ·
+  <a href="#文档--docs">项目文档</a>
+</p>
+
+<p align="center">
+  <img src="docs/assets/persona-voice-poster.png" alt="Persona Voice 项目海报：多终端实时语音助手、可插拔 Agent、个人画像与系统架构" width="100%">
+</p>
 
 ## 定位 / Vision
 
@@ -15,6 +27,14 @@ Persona Voice 是一个个人实时交互语音助手系统，围绕三点设计
    前端与后端解耦。
 3. **个人画像**：导入个人任务画像信息，让助手理解你的习惯、偏好与工作流，
    从“通用语音助手”变成“懂你的专属助手”。
+
+## 功能总览 / Features
+
+从多终端接入、实时语音交互到后端任务执行，一张图了解 Persona Voice 的功能与扩展方向。
+
+<p align="center">
+  <img src="docs/assets/persona-voice-features.png" alt="Persona Voice 功能总览：多终端接入、实时语音交互、可插拔 Agent、个人画像、快速部署和家居场景扩展" width="760">
+</p>
 
 ## 架构 / Architecture
 
@@ -63,8 +83,13 @@ Persona Voice 是一个个人实时交互语音助手系统，围绕三点设计
 
 ## 文档 / Docs
 
-`docs/` 包含项目复盘与排错手册、声纹认证智能家居方案、开源纯声纹门控实现方案，
-与代码历史放在同一个仓库中，便于对照阅读。
+| 文档 | 内容 |
+| --- | --- |
+| [安装与使用指南](docs/SETUP.md) | 环境配置、服务启动、终端部署与常见问题 |
+| [Android App](android/README.md) | 手机端构建与运行说明 |
+| [Python Agent](python/README.md) | 实时语音服务与后端 Agent 接入 |
+| [SparkBot 固件](firmware/README.md) | 嵌入式终端构建与烧录 |
+| [Home Agent Bridge 实施方案](docs/HOME_AGENT_BRIDGE_IMPLEMENTATION.md) | 家居场景联动与主动播报的设计规划 |
 
 ## 子树更新 / Subtree updates
 
